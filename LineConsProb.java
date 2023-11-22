@@ -5,9 +5,14 @@ public class LineConsProb {
     {
         return Math.sqrt((x2-x1)*(x2-x1) + (y2-y1)*(y2-y1));
     }
-    public static boolean equalityCheck(double len1,double len2)
+    public static int equalityCheck(double len1,double len2)
     {
-        return len1==len2;
+       if(len1>len2)
+        return 1;
+       else if (len1<len2)
+        return 2;
+       else 
+        return 0;
     }
     public static void printLengths(double len,int lineNum)
     {
@@ -44,9 +49,16 @@ public class LineConsProb {
         printLengths(len1,1);
         printLengths(len2,2);
 
-        if(equalityCheck(len1, len2))
-            System.out.println("Lines are equal");
-        else
-            System.out.println("Lines are not equal");
+       switch (equalityCheck(len1, len2)) {
+        case 1:
+            System.out.println("Line 1 is longer than Line 2");
+            break;
+        case 2:
+            System.out.println("Line 2 is longer than Line 1");
+            break;
+        default:
+            System.out.println("Both the Lines are equal");
+            break;
+       }
     }
 }
